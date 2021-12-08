@@ -23,4 +23,20 @@ class testLigue
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty"); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
+	
+	@Test
+	void deleteLigue() throws SauvegardeImpossible
+	{
+		Ligue ligue =gestionPersonnel.addLigue("Football");
+		ligue.remove();
+		assertEquals(ligue.getNom(),null);
+	}
+	@Test
+	void modifLigue() throws SauvegardeImpossible
+	{
+		Ligue ligue=gestionPersonnel.addLigue("Football");
+		ligue.setNom("Foot");
+		assertEquals("Foot",ligue.getNom());
+	}
 }
+
