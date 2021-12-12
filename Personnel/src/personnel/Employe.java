@@ -107,6 +107,14 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.prenom = prenom;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	/**
 	 * Retourne le mail de l'employÃ©.
@@ -159,6 +167,13 @@ public class Employe implements Serializable, Comparable<Employe>
 	public Ligue getLigue()
 	{
 		return ligue;
+	}
+	
+	public LocalDate getDateDebut() {
+		return dateDebut;
+	}
+	public LocalDate getDateFin() {
+		return dateFin;
 	}
 	
 	
@@ -215,7 +230,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res = nom + " " + prenom + " " + mail + " (";
+		String res = nom + " " + prenom + " " + mail +" "+dateDebut+" "+dateFin+" (";
 		if (estRoot())
 			res += "super-utilisateur";
 		else
