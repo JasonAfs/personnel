@@ -24,7 +24,7 @@ class testLigue
 	{
 		Ligue ligue =gestionPersonnel.addLigue("Football");
 		ligue.remove();
-		assertEquals(null,ligue.getNom());
+		assertEquals(false, gestionPersonnel.getLigues().contains(ligue));
 	}
 	@Test
 	void modifLigue() throws SauvegardeImpossible
@@ -48,7 +48,7 @@ class testLigue
 		Ligue ligue = gestionPersonnel.addLigue("Football");
 		Employe employe = ligue.addEmploye("Afonso","Jason","jason@gmail.com",LocalDate.parse("2021-01-08"),LocalDate.parse("2022-06-06"),"test");
 		employe.remove();
-		assertEquals(null,employe);
+		assertEquals(false,ligue.getEmployes().contains(employe));
 		
 	}
 	
@@ -58,7 +58,6 @@ class testLigue
 		Ligue ligue = gestionPersonnel.addLigue("Football");
 		Employe employe = ligue.addEmploye("Afonso","Jason","jason@gmail.com",LocalDate.parse("2021-01-08"),LocalDate.parse("2022-06-06"),"test");
 		Employe employe2 = ligue.addEmploye("Afonso2","Jason2","jason2@gmail.com",LocalDate.parse("2021-01-08"),LocalDate.parse("2022-06-06"),"test2");
-		
 		employe.setNom("Afonso2");
 		employe.setPrenom("Jason2");
 		employe.setMail("jason2@gmail.com");
@@ -74,7 +73,7 @@ class testLigue
 		Ligue ligue = gestionPersonnel.addLigue("Flechettes");
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com",LocalDate.parse("2010-09-09"), LocalDate.parse("2020-10-01"), "azerty");
 		ligue.setAdministrateur(employe);
-		assertEquals(null,ligue.getAdministrateur().toString());
+		assertEquals(ligue.getAdministrateur(),ligue.getAdministrateur().toString());
 	}
 }
 
