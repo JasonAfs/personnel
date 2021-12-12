@@ -1,4 +1,5 @@
 package commandLine;
+import java.time.LocalDate;
 
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
@@ -99,6 +100,8 @@ public class LigueConsole
 				{
 					ligue.addEmploye(getString("nom : "), 
 						getString("prenom : "), getString("mail : "), 
+						LocalDate.parse(getString("date d'arrivé  (AAAA-MM-JJ) : ")), 
+						LocalDate.parse(getString("date de départ (AAAA-MM-JJ) : ")), 
 						getString("password : "));
 				}
 		);

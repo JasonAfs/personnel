@@ -159,6 +159,30 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		return ligue;
 	}
+	
+	
+	public void setDateDebut(LocalDate datedebut) throws ErreurDateDepart, SauvegardeImpossible{
+		if(dateFin == null)
+			this.dateDebut = datedebut;
+		else if(datedebut.isAfter(dateFin))
+			throw new ErreurDateDepart(datedebut, dateFin);
+		else {
+			this.dateDebut = datedebut;
+			gestionPersonnel.updateEmploye(this);
+		}
+			
+	}
+	
+	public void setDateFin(LocalDate datefin) throws ErreurDateFin, SauvegardeImpossible{
+		if(dateDebut ==null )
+			this.dateFin = datefin;
+		else if(datefin.isBefore(dateDebut))
+			throw new ErreurDateFin(datefin, dateDebut);
+		else {
+			this.dateFin = datefin;
+			gestionPersonnel.updateEmploye(this);
+		}
+	}
 
 	/**
 	 * Supprime l'employé. Si celui-ci est un administrateur, le root
