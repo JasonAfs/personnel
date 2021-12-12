@@ -51,5 +51,12 @@ class testLigue
 		assertEquals(null,employe);
 		
 	}
+	
+	@Test
+	void modifEmploye() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Football");
+		Employe employe = ligue.addEmploye(null, null, null, null, null, null)
+	}
 }
 
