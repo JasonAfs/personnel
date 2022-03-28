@@ -88,6 +88,9 @@ public class Ligue implements Serializable, Comparable<Ligue>
 			throw new DroitsInsuffisants();
 		this.administrateur = administrateur;
 	}
+	public int getId() {
+		return id;
+	}
 
 	/**
 	 * Retourne les employés de la ligue.

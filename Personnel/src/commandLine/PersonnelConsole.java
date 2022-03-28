@@ -1,6 +1,8 @@
 package commandLine;
 
 import personnel.*;
+import jdbc.JDBC;
+
 import commandLineMenus.*;
 import static commandLineMenus.rendering.examples.util.InOut.*;
 
@@ -73,6 +75,8 @@ public class PersonnelConsole
 	
 	public static void main(String[] args)
 	{
+		JDBC credential = new JDBC();
+		credential.getGestionPersonnel();
 		PersonnelConsole personnelConsole = 
 				new PersonnelConsole(GestionPersonnel.getGestionPersonnel());
 		if (personnelConsole.verifiePassword())

@@ -1,7 +1,7 @@
 package personnel;
 
 import java.io.Serializable;
-
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 /**
@@ -153,7 +153,9 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * Change le password de l'employÃ©.
 	 * @param password le nouveau password de l'employÃ©. 
 	 */
-	
+	public String getPassword() {
+		return password;
+	}
 	public void setPassword(String password)
 	{
 		this.password= password;
@@ -177,7 +179,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 	
 	
-	public void setDateDebut(LocalDate datedebut) throws ErreurDateDepart, SauvegardeImpossible{
+	public void setDateDebut(LocalDate datedebut) throws ErreurDateDepart, SauvegardeImpossible, SQLException{
 		if(dateFin == null)
 			this.dateDebut = datedebut;
 		else if(datedebut.isAfter(dateFin))
@@ -189,7 +191,7 @@ public class Employe implements Serializable, Comparable<Employe>
 			
 	}
 	
-	public void setDateFin(LocalDate datefin) throws ErreurDateFin, SauvegardeImpossible{
+	public void setDateFin(LocalDate datefin) throws ErreurDateFin, SauvegardeImpossible, SQLException{
 		if(dateDebut ==null )
 			this.dateFin = datefin;
 		else if(datefin.isBefore(dateDebut))

@@ -74,7 +74,7 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("insert into ligue (nom) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("insert into ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, ligue.getNom());		
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
@@ -87,4 +87,36 @@ public class JDBC implements Passerelle
 			throw new SauvegardeImpossible(exception);
 		}		
 	}
+	@Override
+	public int insertEmploye(Employe employe) throws SauvegardeImpossible, SQLException 
+	{
+		PreparedStatement instruction;
+		instruction = connection.prepareStatement("insert into employe(nomEe,prenomE,DateDebut,DateFin,mailE,passwordE,ligue) values(?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+		instruction.setString(1, employe.getNom());
+		instruction.setString(2, employe.getPrenom());
+		instruction.setString(3, employe.getDateDebut().toString());
+		instruction.setString(4, employe.getDateFin().toString());
+		instruction.setString(5, employe.getMail());
+		instruction.setString(6, employe.getPassword());
+		instruction.setInt(7, employe.getLigue().getId());
+		instruction.executeUpdate();
+		ResultSet id = instruction.getGeneratedKeys();
+		id.next();
+		return id.getInt(1);
+	}
+	@Override
+	public void updateEmploye(Employe employe) throws SauvegardeImpossible, SQLException 
+	{
+		PreparedStatement instruction;
+		instruction = connection.prepareStatement("update employe set nomE = ? , prenomE = ? , DateDebut = ? , DateFin = ? , mailE= ? , passwordE= ? where idEmploye = ? ", Statement.RETURN_GENERATED_KEYS);
+		instruction.setString(1, employe.getNom());
+		instruction.setString(2, employe.getPrenom());
+		instruction.setString(3, employe.getDateDebut().toString());
+		instruction.setString(4, employe.getDateFin().toString());
+		instruction.setString(5, employe.getMail());
+		instruction.setString(6, employe.getPassword());
+		instruction.setInt(7, employe.getId());
+		instruction.executeUpdate();
+	}
+	
 }
