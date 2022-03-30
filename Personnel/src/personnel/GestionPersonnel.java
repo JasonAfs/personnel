@@ -97,7 +97,7 @@ public class GestionPersonnel implements Serializable
 		ligues.add(ligue);
 		return ligue;
 	}
-	void updateLigue(Ligue ligue) throws SauvegardeImpossible, SQLException
+	void updateLigue(Ligue ligue) throws SauvegardeImpossible
 	{
 		passerelle.updateLigue(ligue);
 	}

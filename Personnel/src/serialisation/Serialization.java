@@ -54,9 +54,14 @@ public class Serialization implements personnel.Passerelle
 	}
 	@Override
 	public void updateEmploye(Employe employe) throws SauvegardeImpossible {
+		
 	}
 	@Override
 	public int insertEmploye(Employe employe) throws SauvegardeImpossible{
-		return 1;
+		return -1;
+	}
+	@Override
+	public void updateLigue(Ligue ligue) throws SauvegardeImpossible{
+		
 	}
 }

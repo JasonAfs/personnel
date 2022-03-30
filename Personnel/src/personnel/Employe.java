@@ -95,6 +95,13 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		try {
+			gestionPersonnel.updateEmploye(this);
+		}
+		catch (SauvegardeImpossible e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
