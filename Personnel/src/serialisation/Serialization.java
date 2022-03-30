@@ -56,7 +56,7 @@ public class Serialization implements personnel.Passerelle
 	public void updateEmploye(Employe employe) throws SauvegardeImpossible {
 	}
 	@Override
-	public int insertEmploye(Employe employe) throws SauvegardeImpossible, SQLException{
+	public int insertEmploye(Employe employe) throws SauvegardeImpossible{
 		return 1;
 	}
 }

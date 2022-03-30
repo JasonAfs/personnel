@@ -1,6 +1,7 @@
 package personnel;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.SortedSet;
@@ -112,9 +113,25 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @return l'employé créé. 
 	 */
 
-	public Employe addEmploye(String nom, String prenom,String mail,LocalDate dateDebut, LocalDate dateFin, String password)
+	public Employe addEmploye(String nom, String prenom, String mail, LocalDate dateArrivée, LocalDate dateDépart,String password) throws SauvegardeImpossible
 	{
-		Employe employe = new Employe(this.gestionPersonnel, this,id, nom, prenom, mail, dateDebut, dateFin, password);
+		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivée, dateDépart);
+		employes.add(employe);
+		try {
+			//ajoue de l' employer dans l'applications
+			employe.setId(gestionPersonnel.insert(employe));
+		} catch (SauvegardeImpossible e) {
+			e.printStackTrace();
+		}
+		return employe;
+	}
+	
+	public Employe addEmploye(int id, String nom, String prenom, String mail, LocalDate dateDebut, LocalDate dateFin,String password) throws ErreurDateDepart, ErreurDateFin, SauvegardeImpossible, SQLException
+	{
+		Employe employe = new Employe(this.gestionPersonnel, this, id, nom, prenom, mail, dateDebut,dateFin,password);
+		employe.setDateDebut(dateDebut);
+		employe.setDateFin(dateFin);
+		employe.setId(id);
 		employes.add(employe);
 		return employe;
 	}

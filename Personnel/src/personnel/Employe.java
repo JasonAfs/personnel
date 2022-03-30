@@ -21,7 +21,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private LocalDate dateDebut, dateFin;
 	private GestionPersonnel gestionPersonnel;
 	
-	public Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password)
+	public Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password,LocalDate dateDebut, LocalDate dateFin ) 
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -29,6 +29,15 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		if(dateDebut != null && dateFin !=null && dateDebut.isBefore(dateFin))
+			try {
+				this.id = gestionPersonnel.insert(this);
+			} catch (SauvegardeImpossible e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}//gestion erreur date
 	}
 	
 	public Employe(GestionPersonnel gestionPersonnel, Ligue ligue,int id, String nom, String prenom, String mail, LocalDate dateDebut, LocalDate dateFin,String password)

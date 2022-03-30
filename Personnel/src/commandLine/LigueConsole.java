@@ -82,7 +82,10 @@ public class LigueConsole
 	private Option changerNom(final Ligue ligue)
 	{
 		return new Option("Renommer", "r", 
-				() -> {ligue.setNom(getString("Nouveau nom : "));});
+				() -> {
+					ligue.setNom(getString("Nouveau nom : "));
+						
+				});
 	}
 
 	private List<Ligue> selectionnerLigue()
@@ -93,16 +96,21 @@ public class LigueConsole
 				);
 	}
 	
-	private Option ajouterEmploye(final Ligue ligue)
+	private Option ajouterEmploye(final Ligue ligue) throws SauvegardeImpossible
 	{
 		return new Option("ajouter un employÃ©", "a",
 				() -> 
 				{
-					ligue.addEmploye(getString("nom : "), 
-						getString("prenom : "), getString("mail : "), 
-						LocalDate.parse(getString("date d'arrivé  (AAAA-MM-JJ) : ")), 
-						LocalDate.parse(getString("date de départ (AAAA-MM-JJ) : ")), 
-						getString("password : "));
+					try {
+						ligue.addEmploye(getString("nom : "), 
+							getString("prenom : "), getString("mail : "), 
+							LocalDate.parse(getString("date d'arrivï¿½  (AAAA-MM-JJ) : ")), 
+							LocalDate.parse(getString("date de dï¿½part (AAAA-MM-JJ) : ")), 
+							getString("password : "));
+					} catch (SauvegardeImpossible e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 		);
 	}
@@ -111,7 +119,12 @@ public class LigueConsole
 	{
 		Menu menu = new Menu("GÃ©rer les employÃ©s de " + ligue.getNom(), "e");
 		menu.add(afficherEmployes(ligue));
-		menu.add(ajouterEmploye(ligue));
+		try {
+			menu.add(ajouterEmploye(ligue));
+		} catch (SauvegardeImpossible e) {
+			System.err.println("Impossible de sauvegarder cet employï¿½");
+			e.printStackTrace();
+		}
 		menu.add(modifierEmploye(ligue));
 		menu.add(supprimerEmploye(ligue));
 		menu.addBack("q");
