@@ -148,6 +148,7 @@ public class JDBC implements Passerelle
 	public void updateEmploye(Employe employe) throws SauvegardeImpossible
 	{
 		try {
+			
 			PreparedStatement instruction;
 			instruction = connection.prepareStatement("update employe set nomE = ? , prenomE = ? , DateDebut = ? , DateFin = ? , mailE= ? , passwordE= ? where idEmploye = ? ", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, employe.getNom());
@@ -181,6 +182,18 @@ public class JDBC implements Passerelle
 		}
 		
 	}
-	
-	
+	@Override
+	public void delete(Employe employe) throws SauvegardeImpossible{
+		try {
+			System.out.println("yo");
+			PreparedStatement instruction;
+		instruction = connection.prepareStatement("delete from employe where idEmploye= ? ", Statement.RETURN_GENERATED_KEYS);
+		instruction.setInt(1, employe.getId());
+		instruction.executeUpdate();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			throw new SauvegardeImpossible(e);
+		}
+	}
 }

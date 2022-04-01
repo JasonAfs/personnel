@@ -134,6 +134,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		return employe;
 	}
 	
+	
 	public Employe addEmploye(int id, String nom, String prenom, String mail, LocalDate dateDebut, LocalDate dateFin,String password) throws ErreurDateDepart, ErreurDateFin, SauvegardeImpossible, SQLException
 	{
 		Employe employe = new Employe(this.gestionPersonnel, this, id, nom, prenom, mail, dateDebut,dateFin,password);
