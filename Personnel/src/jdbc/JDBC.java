@@ -46,6 +46,7 @@ public class JDBC implements Passerelle
 			String requete = "select * from ligue";
 			Statement instruction = connection.createStatement();
 			ResultSet ligues = instruction.executeQuery(requete);
+			System.out.println(ligues.next()+"salut");
 			while (ligues.next())
 			{
 				Ligue ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
