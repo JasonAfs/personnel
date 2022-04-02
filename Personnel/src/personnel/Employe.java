@@ -5,11 +5,11 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 /**
- * EmployÃ© d'une ligue hÃ©bergÃ©e par la M2L. Certains peuvent 
- * Ãªtre administrateurs des employÃ©s de leur ligue.
- * Un seul employÃ©, rattachÃ© Ã  aucune ligue, est le root.
+ * Employé d'une ligue hÃ©bergÃ©e par la M2L. Certains peuvent 
+ * Etre administrateurs des employés de leur ligue.
+ * Un seul employé, rattachés Ã  aucune ligue, est le root.
  * Il est impossible d'instancier directement un employÃ©, 
- * il faut passer la mÃ©thode {@link Ligue#addEmploye addEmploye}.
+ * il faut passer la méthode {@link Ligue#addEmploye addEmploye}.
  */
 
 public class Employe implements Serializable, Comparable<Employe>
@@ -54,11 +54,11 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 	
 	/**
-	 * Retourne vrai ssi l'employÃ© est administrateur de la ligue 
-	 * passÃ©e en paramÃ¨tre.
-	 * @return vrai ssi l'employÃ© est administrateur de la ligue 
-	 * passÃ©e en paramÃ¨tre.
-	 * @param ligue la ligue pour laquelle on souhaite vÃ©rifier si this 
+	 * Retourne vrai ssi l'employé est administrateur de la ligue 
+	 * passée en paramètre.
+	 * @return vrai ssi l'employé est administrateur de la ligue 
+	 * passée en paramètre.
+	 * @param ligue la ligue pour laquelle on souhaite vérifier si this 
 	 * est l'admininstrateur.
 	 */
 	
