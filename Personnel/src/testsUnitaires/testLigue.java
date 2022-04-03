@@ -71,9 +71,11 @@ class testLigue
 	void changeAdmin() throws SauvegardeImpossible, ErreurDateDepart, ErreurDateFin
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Flechettes");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com",LocalDate.parse("2010-09-09"), LocalDate.parse("2020-10-01"), "azerty");
+		Employe employe = ligue.addEmploye("Bouchard", "Gï¿½rard", "g.bouchard@gmail.com",LocalDate.parse("2010-09-09"), LocalDate.parse("2020-10-01"), "azerty");
 		ligue.setAdministrateur(employe);
 		assertEquals(ligue.getAdministrateur(),ligue.getAdministrateur().toString());
 	}
+
+	// for the exams
 }
 
