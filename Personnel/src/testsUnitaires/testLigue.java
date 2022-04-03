@@ -76,6 +76,6 @@ class testLigue
 		assertEquals(ligue.getAdministrateur(),ligue.getAdministrateur().toString());
 	}
 
-	// for the exams
+	// for the exams loliloloilol
 }
 
