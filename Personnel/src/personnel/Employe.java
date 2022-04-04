@@ -189,6 +189,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password= password;
 		try {
 			gestionPersonnel.updateEmploye(this);
+			
 		}
 		catch (SauvegardeImpossible e) {
 			e.printStackTrace();
@@ -274,5 +275,10 @@ public class Employe implements Serializable, Comparable<Employe>
 		else
 			res += ligue.toString();
 		return res + ")";
+	}
+	
+	public int hashcode() {
+		return (int) this.password.hashCode();
+		
 	}
 }
